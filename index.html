@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Виртуальный музей Оленёкской СОШ</title>
+  <meta name="description" content="Виртуальный школьный музей Оленёкской средней общеобразовательной школы: история школы, культура и быт эвенков, память о земляках, природа Оленёкского края.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f2a44'/%3E%3Cpath d='M6 26h20M8 26V13m5 13V13m6 13V13m5 13V13M5 12l11-7 11 7z' stroke='%23e8c66a' stroke-width='2' fill='none'/%3E%3C/svg%3E">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="На главную">
+        <svg viewBox="0 0 32 32" width="36" height="36" aria-hidden="true"><path d="M6 26h20M8 26V13m5 13V13m6 13V13m5 13V13M5 12l11-7 11 7z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/></svg>
+        <span>Музей <b>Оленёкской СОШ</b></span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Меню">☰</button>
+      <nav id="nav" class="nav">
+        <a href="#about">О музее</a>
+        <a href="#halls">Залы</a>
+        <a href="#tour">Экскурсия</a>
+        <a href="#collection">Коллекция</a>
+        <a href="#gallery">Фото</a>
+        <a href="#timeline">Летопись</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="aurora" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <p class="eyebrow">Республика Саха (Якутия) · Оленёкский эвенкийский национальный район</p>
+        <h1>Виртуальный музей<br>Оленёкской средней школы</h1>
+        <p class="lead">Истории учителей и выпускников, традиции эвенкийского народа, память о земляках и природа нашего края — в одном месте, открытом для всех.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#tour">Начать экскурсию</a>
+          <a class="btn btn-ghost" href="#collection">Смотреть коллекцию</a>
+        </div>
+        <dl class="stats" id="stats"></dl>
+      </div>
+      <div class="ornament" aria-hidden="true"></div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container about">
+        <div>
+          <h2>О музее</h2>
+          <p>Школьный музей — это память многих поколений учеников и педагогов Оленёкской школы. Здесь собраны фотографии, документы, предметы быта и рассказы, которые бережно хранят наши семьи.</p>
+          <p>Виртуальная версия музея позволяет познакомиться с экспозицией из любой точки мира: выпускникам — вспомнить школьные годы, ученикам — подготовить проект, гостям — узнать о жизни села Оленёк на берегу одноимённой реки.</p>
+          <p>Музей пополняется силами учеников, учителей и жителей села. Если у вас есть фотографии, письма или предметы, связанные с историей школы и района, — <a href="#contacts">свяжитесь с нами</a>.</p>
+        </div>
+        <aside class="about-side">
+          <figure class="about-photo">
+            <img src="images/pervye.webp" alt="Ученики и педагоги Оленёкской школы на сцене актового зала">
+            <figcaption>Ученики и педагоги школы</figcaption>
+          </figure>
+          <div class="card quote">
+          <p>«Народ, не знающий своего прошлого, не имеет будущего».</p>
+          <span>— М. В. Ломоносов</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="halls" class="section section-alt">
+      <div class="container">
+        <h2>Залы музея</h2>
+        <p class="section-lead">Выберите зал, чтобы перейти к его экспонатам.</p>
+        <div class="halls-grid" id="halls-grid"></div>
+      </div>
+    </section>
+
+    <section id="tour" class="section">
+      <div class="container">
+        <h2>Виртуальная экскурсия</h2>
+        <p class="section-lead">Пройдите по залам музея по порядку, как на настоящей экскурсии.</p>
+        <div class="tour card" id="tour-box">
+          <div class="tour-progress" id="tour-progress" role="tablist" aria-label="Залы экскурсии"></div>
+          <div class="tour-body" id="tour-body" aria-live="polite"></div>
+          <div class="tour-nav">
+            <button class="btn btn-ghost" id="tour-prev">← Предыдущий зал</button>
+            <button class="btn btn-primary" id="tour-next">Следующий зал →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="collection" class="section section-alt">
+      <div class="container">
+        <h2>Коллекция экспонатов</h2>
+        <div class="filters">
+          <input type="search" id="search" placeholder="Поиск по экспонатам…" aria-label="Поиск по экспонатам">
+          <div class="chips" id="chips" role="group" aria-label="Фильтр по залам"></div>
+        </div>
+        <div class="exhibits-grid" id="exhibits-grid"></div>
+        <p class="empty" id="empty" hidden>Ничего не найдено. Попробуйте изменить запрос.</p>
+      </div>
+    </section>
+
+    <section id="gallery" class="section">
+      <div class="container">
+        <h2>Школьная жизнь</h2>
+        <p class="section-lead">Фотографии из жизни школы сегодня — будущая история музея.</p>
+        <div class="gallery" id="gallery-grid"></div>
+      </div>
+    </section>
+
+    <section id="timeline" class="section section-alt">
+      <div class="container">
+        <h2>Летопись</h2>
+        <p class="section-lead">Основные вехи истории образования в Оленёкском крае.</p>
+        <ol class="timeline" id="timeline-list"></ol>
+      </div>
+    </section>
+
+    <section id="contacts" class="section section-alt">
+      <div class="container contacts">
+        <div>
+          <h2>Контакты</h2>
+          <p><b>МБОУ «Оленёкская средняя общеобразовательная школа»</b></p>
+          <p>Республика Саха (Якутия), Оленёкский район, с. Оленёк</p>
+          <p>Руководитель музея: <span class="placeholder">укажите ФИО</span></p>
+          <p>Эл. почта: <span class="placeholder">укажите адрес</span></p>
+        </div>
+        <div class="card">
+          <h3>Передать экспонат в музей</h3>
+          <p>Мы будем благодарны за фотографии, документы, награды, письма и предметы быта. Каждый экспонат описывается и хранится с указанием дарителя.</p>
+          <ol class="steps">
+            <li>Свяжитесь с руководителем музея.</li>
+            <li>Расскажите историю предмета: кому принадлежал, когда и где использовался.</li>
+            <li>Передайте оригинал или его цифровую копию.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Виртуальный музей Оленёкской СОШ</p>
+      <a href="#top">Наверх ↑</a>
+    </div>
+  </footer>
+
+  <dialog id="modal" class="modal" aria-labelledby="modal-title">
+    <button class="modal-close" id="modal-close" aria-label="Закрыть">×</button>
+    <div id="modal-content"></div>
+  </dialog>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

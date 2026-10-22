@@ -1,0 +1,247 @@
+:root {
+  --night: #0f2a44;
+  --night-2: #16395c;
+  --gold: #e8c66a;
+  --snow: #f7f5f0;
+  --paper: #ffffff;
+  --ink: #1d2733;
+  --muted: #5b6875;
+  --line: #e2ddd2;
+  --radius: 14px;
+  --shadow: 0 6px 24px rgba(15, 42, 68, .10);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  margin: 0;
+  font: 17px/1.6 "PT Sans", system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--snow);
+}
+h1, h2, h3 { font-family: "PT Serif", Georgia, serif; line-height: 1.2; margin: 0 0 .5em; }
+h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); color: var(--night); }
+a { color: var(--night-2); }
+img { max-width: 100%; display: block; }
+button { font: inherit; cursor: pointer; }
+
+.container { width: min(1140px, 100% - 32px); margin-inline: auto; }
+.section { padding: 72px 0; }
+.section-alt { background: #efebe2; }
+.section-lead { color: var(--muted); margin: -.2em 0 1.6em; }
+.card { background: var(--paper); border-radius: var(--radius); box-shadow: var(--shadow); padding: 28px; }
+.eyebrow { text-transform: uppercase; letter-spacing: .08em; font-size: .8rem; margin: 0 0 .6em; opacity: .85; }
+.placeholder { color: var(--muted); font-style: italic; }
+
+/* Кнопки */
+.btn {
+  display: inline-block; padding: 12px 22px; border-radius: 999px;
+  border: 2px solid transparent; text-decoration: none; font-weight: 700;
+  transition: transform .15s, background .15s;
+}
+.btn:hover:not(:disabled) { transform: translateY(-1px); }
+.btn:disabled { opacity: .4; cursor: default; }
+.btn-primary { background: var(--gold); color: var(--night); }
+.btn-ghost { border-color: currentColor; color: inherit; background: transparent; }
+
+/* Шапка */
+.site-header {
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(15, 42, 68, .96); color: #fff;
+  backdrop-filter: blur(6px);
+}
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.logo { display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; }
+.logo svg { color: var(--gold); }
+.nav { display: flex; gap: 22px; }
+.nav a { color: #dfe7ef; text-decoration: none; }
+.nav a:hover { color: var(--gold); }
+.nav-toggle { display: none; background: none; border: 0; color: #fff; font-size: 1.6rem; }
+
+/* Главный экран */
+.hero {
+  position: relative; overflow: hidden; color: #fff;
+  background: linear-gradient(180deg, #081a2c 0%, var(--night) 55%, var(--night-2) 100%);
+  padding: 96px 0 120px;
+}
+.aurora {
+  position: absolute; inset: -20% -10% auto; height: 80%;
+  background:
+    radial-gradient(40% 50% at 25% 40%, rgba(80, 230, 170, .35), transparent 70%),
+    radial-gradient(35% 45% at 65% 30%, rgba(90, 160, 255, .30), transparent 70%),
+    radial-gradient(30% 40% at 85% 55%, rgba(190, 120, 255, .22), transparent 70%);
+  filter: blur(30px);
+  animation: aurora 14s ease-in-out infinite alternate;
+}
+@keyframes aurora { to { transform: translateX(6%) skewX(-6deg); opacity: .7; } }
+@media (prefers-reduced-motion: reduce) { .aurora { animation: none; } html { scroll-behavior: auto; } }
+.hero-inner { position: relative; }
+.hero h1 { font-size: clamp(2.2rem, 5.5vw, 3.8rem); }
+.lead { font-size: 1.2rem; max-width: 640px; color: #d6e0ea; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin: 28px 0 44px; }
+.stats { display: flex; flex-wrap: wrap; gap: 40px; margin: 0; }
+.stats dt { font: 700 2.2rem "PT Serif", serif; color: var(--gold); }
+.stats dd { margin: 0; color: #c8d4e0; }
+
+/* Эвенкийский орнамент — полоса ромбов */
+.ornament {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 26px;
+  background:
+    linear-gradient(135deg, transparent 37%, var(--gold) 37% 63%, transparent 63%) 0 0 / 26px 26px,
+    linear-gradient(45deg, transparent 37%, #b4442c 37% 63%, transparent 63%) 13px 0 / 26px 26px,
+    #0a1e33;
+  opacity: .9;
+}
+
+/* О музее */
+.about { display: grid; grid-template-columns: 1.6fr 1fr; gap: 48px; align-items: center; }
+.about-side { display: flex; flex-direction: column; gap: 20px; }
+.about-photo { margin: 0; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); background: var(--paper); }
+.about-photo figcaption { padding: 10px 16px; color: var(--muted); font-size: .9rem; }
+.quote { border-left: 6px solid var(--gold); }
+.quote p { font: italic 1.35rem/1.4 "PT Serif", serif; margin: 0 0 .6em; }
+.quote span { color: var(--muted); }
+
+/* Залы */
+.halls-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+.hall-card {
+  text-align: left; background: var(--paper); border: 0; border-top: 6px solid var(--hall);
+  border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); color: inherit;
+  display: flex; flex-direction: column; transition: transform .2s;
+}
+.hall-card:hover { transform: translateY(-4px); }
+.hall-card p { color: var(--muted); flex: 1; }
+.hall-icon { color: var(--hall); }
+.hall-icon .icon, .no-photo .icon { fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+.hall-count { font-weight: 700; color: var(--hall); }
+
+/* Экскурсия */
+.tour { padding: 0; overflow: hidden; }
+.tour-progress { display: flex; overflow-x: auto; border-bottom: 1px solid var(--line); }
+.tour-progress button {
+  flex: 1 0 auto; display: flex; align-items: center; gap: 8px;
+  padding: 14px 18px; background: none; border: 0; border-bottom: 3px solid transparent;
+  color: var(--muted); white-space: nowrap;
+}
+.tour-progress button span {
+  display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%;
+  background: var(--line); font-weight: 700; font-size: .85rem;
+}
+.tour-progress button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--hall); }
+.tour-progress button[aria-selected="true"] span { background: var(--hall); color: #fff; }
+.tour-body { padding: 28px; }
+.tour-head { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 24px; }
+.tour-head .eyebrow { color: var(--hall); font-weight: 700; }
+.tour-head p:last-child { color: var(--muted); margin: 0; }
+.tour-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.tour-nav { display: flex; justify-content: space-between; gap: 12px; padding: 0 28px 28px; color: var(--night); }
+
+/* Коллекция */
+.filters { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
+#search {
+  width: 100%; max-width: 420px; padding: 12px 18px; font: inherit;
+  border: 1px solid var(--line); border-radius: 999px; background: var(--paper);
+}
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  padding: 7px 16px; border-radius: 999px; border: 1px solid var(--line);
+  background: var(--paper); color: var(--ink);
+}
+.chip[aria-pressed="true"] { background: var(--hall, var(--night)); border-color: var(--hall, var(--night)); color: #fff; }
+.exhibits-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+.exhibit {
+  text-align: left; padding: 0; border: 0; background: var(--paper); color: inherit;
+  border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+  display: flex; flex-direction: column; transition: transform .2s;
+}
+.exhibit:hover { transform: translateY(-4px); }
+.exhibit-visual { aspect-ratio: 4 / 3; }
+.exhibit-visual img, .modal-visual img { width: 100%; height: 100%; object-fit: cover; }
+.no-photo {
+  display: grid; place-items: center; color: var(--hall);
+  background:
+    repeating-linear-gradient(45deg, transparent 0 14px, color-mix(in srgb, var(--hall) 7%, transparent) 14px 28px),
+    color-mix(in srgb, var(--hall) 12%, #fff);
+}
+.exhibit-info { display: flex; flex-direction: column; padding: 14px 16px 18px; gap: 2px; }
+.exhibit-hall { font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: var(--hall); font-weight: 700; }
+.exhibit-title { font: 700 1.1rem/1.3 "PT Serif", serif; }
+.exhibit-period { color: var(--muted); font-size: .92rem; margin: 0; }
+.empty { color: var(--muted); }
+
+/* Фотогалерея */
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+.photo {
+  position: relative; padding: 0; border: 0; border-radius: var(--radius); overflow: hidden;
+  aspect-ratio: 4 / 3; box-shadow: var(--shadow); background: var(--night);
+}
+.photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
+.photo:hover img { transform: scale(1.04); }
+.photo-caption {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 28px 14px 12px; text-align: left;
+  color: #fff; font-weight: 700; background: linear-gradient(transparent, rgba(8, 20, 34, .85));
+}
+.modal-photo { width: min(1000px, 100% - 32px); }
+.modal-photo #modal-content { display: block; }
+.lightbox { margin: 0; }
+.lightbox img { width: 100%; max-height: 75vh; object-fit: contain; background: #0a1e33; }
+.lightbox figcaption { padding: 18px 24px 22px; }
+.lightbox figcaption p { margin: 0; color: var(--muted); }
+
+/* Летопись */
+.timeline { list-style: none; padding: 0; margin: 0; border-left: 3px solid var(--gold); }
+.timeline li { position: relative; padding: 0 0 26px 28px; }
+.timeline li::before {
+  content: ""; position: absolute; left: -10px; top: 4px; width: 17px; height: 17px;
+  border-radius: 50%; background: var(--night); border: 3px solid var(--gold);
+}
+.timeline .when { font: 700 1.15rem "PT Serif", serif; color: var(--night); }
+.timeline p { margin: 4px 0 0; color: var(--muted); max-width: 720px; }
+
+/* Контакты */
+.contacts { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.contacts p { margin: .3em 0; }
+.steps { padding-left: 1.2em; margin: 0; }
+
+/* Подвал */
+.site-footer { background: var(--night); color: #c8d4e0; padding: 24px 0; }
+.site-footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.site-footer a { color: var(--gold); }
+
+/* Модальное окно */
+.modal {
+  width: min(820px, 100% - 32px); max-height: calc(100% - 32px); padding: 0; border: 0;
+  border-radius: var(--radius); box-shadow: 0 20px 60px rgba(0, 0, 0, .35);
+}
+.modal::backdrop { background: rgba(8, 20, 34, .7); }
+#modal-content { display: grid; grid-template-columns: 1fr 1fr; }
+.modal-visual { min-height: 300px; }
+.modal-text { padding: 32px; }
+.donor { font-style: italic; color: var(--muted); }
+.modal-close {
+  position: absolute; top: 10px; right: 12px; z-index: 1; width: 38px; height: 38px;
+  border: 0; border-radius: 50%; background: rgba(255, 255, 255, .9); font-size: 1.6rem; line-height: 1;
+}
+
+/* Адаптивность */
+@media (max-width: 860px) {
+  .nav-toggle { display: block; }
+  .nav {
+    display: none; position: absolute; top: 64px; left: 0; right: 0;
+    flex-direction: column; gap: 0; background: var(--night); padding: 8px 16px 16px;
+  }
+  .nav.open { display: flex; }
+  .nav a { padding: 10px 0; border-bottom: 1px solid rgba(255, 255, 255, .08); }
+  .about, .contacts { grid-template-columns: 1fr; gap: 28px; }
+  #modal-content { grid-template-columns: 1fr; }
+  .modal-visual { min-height: 200px; aspect-ratio: 16 / 9; }
+}
+@media (max-width: 520px) {
+  .section { padding: 52px 0; }
+  .hero { padding: 64px 0 96px; }
+  .logo span { font-size: .95rem; }
+  .tour-head { flex-direction: column; gap: 8px; }
+  .tour-body, .card { padding: 20px; }
+  .tour-nav { padding: 0 20px 20px; }
+  .tour-nav .btn { padding: 10px 14px; font-size: .9rem; }
+}
